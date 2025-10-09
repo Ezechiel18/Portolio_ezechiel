@@ -1,0 +1,37 @@
+
+#Script expresion
+Ce CASE sert uniquement à éviter l’erreur quand tu tombes sur le cas "0 / 0".
+
+Donc :
+
+Si tu as 15/15 → 100 % ✅
+
+Si tu as 0/0 → tu ne veux pas afficher de valeur → NULL ou « Non applicable »
+
+CASE
+  WHEN  "Join_Cou_1"  = 0 THEN NULL
+  ELSE 100 *  "Join_Count"  /  "Join_Cou_1" 
+END
+
+
+####Reclassifification accs des menages
+
+CASE
+  WHEN  "Prop_acc_2"  IS NULL THEN 'Absence de bâtiment'
+  WHEN  "Prop_acc_2"  = 0 THEN '0 % - Pas d\'accès'
+  WHEN  "Prop_acc_2"  > 0 AND  "Prop_acc_2"  <= 50 THEN '1 à 50 % - Faible accès'
+  WHEN  "Prop_acc_2"  > 50 AND  "Prop_acc_2"  <= 75 THEN '51 à 75 % - Accès moyen'
+  WHEN  "Prop_acc_2"  > 75 AND  "Prop_acc_2" < 100 THEN '76 à 99 % - Bon accès'
+  WHEN  "Prop_acc_2"  = 100 THEN '100 % - Accès total'
+END
+
+
+#Reclass equipement / grille (densité)
+
+CASE
+    WHEN  "densitenumpsup"  = 0 THEN 'Non équipé'
+    WHEN  "densitenumpsup"  > 0 AND  "densitenumpsup"  <= 4 THEN 'Sous-équipé'
+    WHEN  "densitenumpsup"  > 4 AND  "densitenumpsup"  <= 12 THEN 'Moyennement équipé'
+    WHEN  "densitenumpsup"  > 12 AND  "densitenumpsup"  <= 28 THEN 'Bien équipé'
+    WHEN  "densitenumpsup"  > 28 AND  "densitenumpsup"  <= 40 THEN 'Très bien équipé'
+END

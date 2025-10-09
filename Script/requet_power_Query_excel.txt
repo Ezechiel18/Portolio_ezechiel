@@ -1,0 +1,5 @@
+#selction de tous chiffre en première position dane une adresse.
+= if List.First(Text.ToList([Adresse])) >= "0" and List.First(Text.ToList([Adresse])) <= "9"
+then Text.BeforeDelimiter([Adresse] & " ", " ")
+else null
+

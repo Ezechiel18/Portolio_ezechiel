@@ -1,0 +1,40 @@
+name: qual_env
+# =============================================================================
+#  Environnement conda pour le projet de qualification SIG — SCE
+#
+#  CRÉATION (première installation) :
+#    conda env create -f environment.yml
+#
+#  ACTIVATION :
+#    conda activate qual_env
+#
+#  MISE À JOUR (si environment.yml a changé) :
+#    conda env update -f environment.yml --prune
+# =============================================================================
+
+channels:
+  - conda-forge     # dépôt communautaire — meilleure source pour les packages SIG
+  - defaults        # dépôt officiel Anaconda
+
+dependencies:
+  - python=3.11               # version Python stable et compatible
+
+  # --- Lecture et traitement des données SIG ---
+  - geopandas>=0.14           # lecture shapefiles, GeoPackage, opérations spatiales
+  - pandas>=2.0               # manipulation des tableaux de données
+  - numpy>=1.24               # calculs numériques
+  - shapely>=2.0              # géométries (points, polylignes, polygones)
+  - pyogrio>=0.6              # lecture rapide des fichiers SIG (remplace fiona)
+
+  # --- Visualisation ---
+  - matplotlib>=3.7           # génération des graphiques (jauges, donuts, barres)
+  - contextily>=1.3           # fond de carte OpenStreetMap pour les cartes
+
+  # --- Génération du rapport ---
+  - jinja2>=3.1               # moteur de templates pour le HTML
+
+  # --- Packages disponibles uniquement via pip ---
+  - pip
+  - pip:
+    - xhtml2pdf>=0.2.11       # conversion HTML → PDF (fallback si Chrome absent)
+    - python-pptx>=0.6.21     # génération du PowerPoint éditable

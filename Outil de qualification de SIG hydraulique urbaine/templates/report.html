@@ -1,0 +1,689 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<style>
+@page { size: A4 landscape; margin: 5mm; }
+
+*{box-sizing:border-box;margin:0;padding:0}
+body{font-family:Arial,sans-serif;background:#fff;color:#1a1a1a;width:287mm}
+.page{background:#fff;width:100%}
+
+/* BANDEAU */
+.band{background:#3d2e4a;color:#fff;padding:9px 14px;display:flex;
+      justify-content:space-between;align-items:center;border-bottom:3px solid #ed7d31}
+.band-left{display:flex;align-items:center;gap:11px}
+.band h1{font-size:13pt;font-weight:700;line-height:1.3}
+.band h1 span{display:block;color:#ed7d31;font-size:9pt;font-weight:400;margin-top:2px}
+.band-meta{font-size:8pt;text-align:right;line-height:1.8;color:#d9cde3}
+.band-meta b{color:#f0d9b5}
+
+.body{padding:7px 11px}
+
+/* TITRES BLOCS */
+.block-title{display:flex;align-items:center;gap:6px;border-bottom:1.5px solid #ed7d31;
+             padding-bottom:3px;margin-bottom:6px}
+.bnum{background:#ed7d31;color:#fff;font-size:9pt;font-weight:700;
+      padding:2px 5px;border-radius:2px}
+.btxt{font-size:9.5pt;font-weight:700;color:#3d2e4a;text-transform:uppercase;
+      letter-spacing:.04em}
+.sub{font-size:8pt;font-weight:700;color:#6b5878;margin:5px 0 3px}
+
+/* GRILLES */
+.grid2{display:grid;grid-template-columns:1fr 1fr;gap:9px}
+.grid3{display:grid;grid-template-columns:1fr 1fr 1fr;gap:6px}
+.grid4{display:grid;grid-template-columns:repeat(4,1fr);gap:7px}
+
+/* KPI */
+.kpi{text-align:center;padding:6px 4px;background:#faf8fc;
+     border:0.5px solid #e8e0ee;border-radius:5px}
+.kpi-lbl{font-size:7.5pt;color:#6b5878;text-transform:uppercase;
+         letter-spacing:.04em;margin-bottom:3px;min-height:18px;
+         display:flex;align-items:center;justify-content:center;
+         text-align:center;line-height:1.3}
+.kpi-img{width:100%;max-height:82px;object-fit:contain}
+.kpi-val{font-size:22pt;font-weight:700;line-height:1}
+.kpi-sub{font-size:7.5pt;color:#8a7a98;margin-top:2px}
+
+.or{color:#ed7d31}.pu{color:#6b4a8a}.gr{color:#4a8050}.re{color:#a63030}.wa{color:#c25e0e}
+
+/* TABLEAUX */
+table{width:100%;border-collapse:collapse;font-size:8pt}
+th{background:#f2ecf5;color:#3d2e4a;font-weight:700;padding:4px 6px;
+   text-align:left;border-bottom:1px solid #d9cde3}
+td{padding:4px 6px;border-bottom:0.5px solid #eee;vertical-align:middle}
+tr:last-child td{border-bottom:none}
+
+/* BARRES HORIZONTALES inline */
+.bar-row{display:flex;align-items:center;gap:5px;margin-bottom:5px;font-size:8.5pt}
+.bar-lab{width:110px;color:#333;white-space:nowrap;overflow:hidden;
+         text-overflow:ellipsis;flex-shrink:0}
+.bar-tr{flex:1;background:#efeaf2;border-radius:2px;height:10px}
+.bar-fi{height:10px;border-radius:2px}
+.bar-pc{width:32px;text-align:right;font-weight:700;flex-shrink:0;font-size:8.5pt}
+
+/* DONUT + LÉGENDE */
+.dc{display:flex;align-items:center;gap:9px}
+.dc-leg{font-size:8.5pt;line-height:2.0}
+.dot{display:inline-block;width:9px;height:9px;border-radius:50%;
+     margin-right:5px;vertical-align:middle}
+
+/* CARTES DÉLIMITATION */
+.dcard{border-radius:5px;padding:7px 4px;text-align:center}
+.dcard .big{font-size:18pt;font-weight:700}
+.dcard .lbl{font-size:7.5pt;margin-top:2px;line-height:1.3}
+.bg-g{background:#e8f0e9}.bg-o{background:#fce4cf}.bg-r{background:#f5dada}
+
+/* IMAGES */
+img.chart{width:100%;height:auto;display:block}
+img.map-img{width:100%;height:auto;display:block;border-radius:4px;
+            border:0.5px solid #c5d3e3;margin-top:4px}
+
+/* MESSAGE VIDE */
+.msg-vide{background:#f2ecf5;border-radius:5px;padding:10px;
+          text-align:center;color:#6b5878;font-size:8.5pt;font-style:italic}
+.msg-vide b{display:block;font-size:11pt;color:#3d2e4a;margin-bottom:4px}
+
+/* NIVEAU DE QUALITÉ */
+.niveau-wrap{padding:9px 12px;background:#faf8fc;border-radius:6px;
+             border:0.5px solid #e8e0ee}
+.niveau-titre{font-size:8.5pt;color:#6b5878;text-transform:uppercase;
+              letter-spacing:.04em;font-weight:700;margin-bottom:9px;text-align:center}
+.scale-outer{position:relative;margin-bottom:22px}
+.scale-bar{display:flex;height:22px;border-radius:4px;overflow:hidden;
+           font-size:8pt;font-weight:700}
+.sc-r{flex:50;background:#a63030;color:#fff;display:flex;
+      align-items:center;justify-content:center}
+.sc-o{flex:30;background:#ed7d31;color:#fff;display:flex;
+      align-items:center;justify-content:center}
+.sc-g{flex:20;background:#4a8050;color:#fff;display:flex;
+      align-items:center;justify-content:center}
+.cursor{position:absolute;top:24px;transform:translateX(-50%);
+        display:flex;flex-direction:column;align-items:center;gap:1px}
+.cursor-arrow{width:0;height:0;border-left:5px solid transparent;
+              border-right:5px solid transparent;border-bottom:9px solid #3d2e4a}
+.cursor-val{font-size:8.5pt;font-weight:700;color:#3d2e4a;background:#fff;
+            border:0.5px solid #3d2e4a;border-radius:3px;padding:2px 5px}
+.interp-grid{display:grid;grid-template-columns:1fr 1fr 1fr;gap:5px;margin-top:5px}
+.interp-card{border-radius:4px;padding:6px 7px;text-align:center}
+.interp-card .it{font-size:8pt;font-weight:700;margin-bottom:2px}
+.interp-card .id{font-size:7.5pt;line-height:1.4}
+.note-metier{background:#f5eee0;border-left:3px solid #ed7d31;
+             border-radius:0 4px 4px 0;padding:5px 8px;margin-top:6px;
+             font-size:8pt;color:#5c3d1e;line-height:1.45}
+.note-metier b{color:#c25e0e}
+
+/* PRIORITÉS */
+.pill{display:inline-block;font-size:7.5pt;padding:1px 6px;
+      border-radius:7px;font-weight:700;text-align:center}
+.pr{background:#f5dada;color:#a63030}
+.po{background:#fce4cf;color:#c25e0e}
+.pp{background:#e8deef;color:#6b4a8a}
+
+/* FOOTER */
+.footer{background:#3d2e4a;border-top:2px solid #ed7d31;padding:4px 14px;
+        display:flex;justify-content:space-between;font-size:7.5pt;
+        color:#d9cde3;margin-top:7px}
+
+.bloc{margin-bottom:7px}
+</style>
+</head>
+<body>
+<div class="page">
+
+<!-- BANDEAU -->
+<div class="band">
+  <div class="band-left">
+    {{ logo_html }}
+    <h1>Rapport de qualification des données SIG
+      <span>{{ projet_commune }} — {{ projet_nom }}</span>
+    </h1>
+  </div>
+  <div class="band-meta">
+    Projet : <b>{{ projet_nom }}</b><br>
+    Date : <b>{{ projet_date }}</b> · Version : <b>{{ projet_version }}</b><br>
+    Couches : <b>{{ nb_couches }}</b> · Objets : <b>{{ nb_objets_total }}</b><br>
+    Produit par SCE
+  </div>
+</div>
+
+<div class="body">
+
+  <!-- BLOC 1 : SYNTHÈSE -->
+  <div class="bloc">
+    <div class="block-title"><span class="bnum">1</span><span class="btxt">Synthèse</span></div>
+    <div class="grid4">
+      <div class="kpi">
+        <div class="kpi-lbl">Score global<br>de qualité</div>
+        <img class="kpi-img" src="{{ img_gauge_ifq }}" alt="Score global">
+      </div>
+      <div class="kpi">
+        <div class="kpi-lbl">Qualité<br>attributaire</div>
+        <img class="kpi-img" src="{{ img_gauge_attr }}" alt="Qualité attributaire">
+      </div>
+      <div class="kpi">
+        <div class="kpi-lbl">Qualité<br>topologique</div>
+        <img class="kpi-img" src="{{ img_gauge_topo }}" alt="Qualité topologique">
+      </div>
+      <div class="kpi">
+        <div class="kpi-lbl">Anomalies<br>détectées</div>
+        <div class="kpi-val wa">{{ total_anomalies }}</div>
+        <div class="kpi-sub">sur {{ nb_objets_total }} objets</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- BLOCS 2 ET 3 -->
+  <div class="grid2">
+
+    <!-- BLOC 2 : QUALITÉ ATTRIBUTAIRE -->
+    <div class="bloc">
+      <div class="block-title"><span class="bnum">2</span><span class="btxt">Qualité attributaire</span></div>
+
+      <div class="sub">2.1 Statistiques générales par couche</div>
+      <table>
+        <tr><th>Couche</th><th>Objets</th><th>% Complétude</th><th>Invalides</th></tr>
+        {% for layer in layers %}
+        <tr>
+          <td>{{ layer.name }}</td><td>{{ layer.n_total }}</td>
+          <td class="{{ 'gr' if layer.completude >= 80 else ('or' if layer.completude >= 50 else 're') }}">
+            <b>{{ layer.completude }}%</b></td>
+          <td class="{{ 're' if layer.n_invalides > 20 else ('wa' if layer.n_invalides > 0 else 'gr') }}">
+            <b>{{ layer.n_invalides }}</b></td>
+        </tr>
+        {% endfor %}
+      </table>
+
+      <div class="sub">2.2 Répartition des types d'erreurs</div>
+      {% if has_errors %}
+      <div class="dc">
+        <img src="{{ img_donut_erreurs }}" style="width:120px;height:auto;flex-shrink:0;" alt="Types d'erreurs">
+        <div class="dc-leg">
+          {% for label, info in type_errors_legende %}
+          <div><span class="dot" style="background:{{ info.couleur }}"></span>{{ label }} ({{ info.pct }}%)</div>
+          {% endfor %}
+        </div>
+      </div>
+      {% else %}
+      <div class="msg-vide"><b>✓ Aucune erreur de valeur détectée</b>Toutes les valeurs respectent les typologies attendues.</div>
+      {% endif %}
+
+            <!-- 2.3 Graphe 3 segments : conforme / invalide / non renseigné -->
+      <div class="sub">2.3 Qualité des champs clés</div>
+      <div style="display:flex;gap:12px;margin-bottom:6px;font-size:7pt;">
+        <span><span style="display:inline-block;width:10px;height:10px;border-radius:2px;background:#4a8050;margin-right:3px;vertical-align:middle;"></span>Conforme</span>
+        <span><span style="display:inline-block;width:10px;height:10px;border-radius:2px;background:#ed7d31;margin-right:3px;vertical-align:middle;"></span>Rempli invalide</span>
+        <span><span style="display:inline-block;width:10px;height:10px;border-radius:2px;background:#9b85b0;margin-right:3px;vertical-align:middle;"></span>Non renseigné</span>
+      </div>
+      {% if champs_conformite %}
+      {% for groupe in champs_conformite %}
+      <div style="font-size:7.5pt;font-weight:700;color:#3d2e4a;margin:5px 0 3px;padding:2px 5px;background:#f2ecf5;border-radius:3px;">{{ groupe.couche }}</div>
+      {% for c in groupe.champs %}
+      <div class="bar-row" style="margin-bottom:4px;">
+        <span class="bar-lab">{{ c.label }}</span>
+        <div style="flex:1;height:13px;display:flex;border-radius:3px;overflow:hidden;">
+          {% if c.conforme > 0 %}<div style="width:{{ c.conforme }}%;background:#4a8050;display:flex;align-items:center;justify-content:center;font-size:6.5pt;color:white;font-weight:700;">{% if c.conforme >= 12 %}{{ c.conforme }}%{% endif %}</div>{% endif %}
+          {% if c.invalide > 0 %}<div style="width:{{ c.invalide }}%;background:#ed7d31;display:flex;align-items:center;justify-content:center;font-size:6.5pt;color:white;font-weight:700;">{% if c.invalide >= 12 %}{{ c.invalide }}%{% endif %}</div>{% endif %}
+          {% if c.vide > 0 %}<div style="width:{{ c.vide }}%;background:#9b85b0;display:flex;align-items:center;justify-content:center;font-size:6.5pt;color:white;font-weight:700;">{% if c.vide >= 12 %}{{ c.vide }}%{% endif %}</div>{% endif %}
+        </div>
+        <span style="width:32px;text-align:right;font-weight:700;font-size:8pt;flex-shrink:0;color:#4a8050;">{{ c.conforme }}%</span>
+      </div>
+      {% endfor %}
+      {% endfor %}
+      <div style="font-size:6.5pt;color:#8a7a98;margin-top:3px;font-style:italic">
+        Lecture : vert = valeurs conformes · orange = renseigné mais non conforme · gris = champ vide
+        · Complétude = vert + orange · Conformité = vert seul
+      </div>
+      {% else %}
+      <div class="msg-vide"><b>Aucun champ à analyser</b>Vérifier le mapping dans mapping.py.</div>
+      {% endif %}
+
+      <!-- 2.4 Conformité par type de tronçon et de matériau -->
+      <div class="sub">2.4 Conformité par type de tronçon et de matériau</div>
+
+      <!-- Tableau par type de tronçon -->
+      {% if stats_type %}
+      <div style="font-size:7.5pt;font-weight:700;color:#3d2e4a;margin:4px 0 2px;">Tronçon</div>
+      <table>
+        <tr>
+          <th>Type</th><th style="text-align:right">Nb</th>
+          <th style="text-align:center">Diamètre</th>
+          <th style="text-align:center">Hauteur</th>
+          <th style="text-align:center">Matériau</th>
+        </tr>
+        {% for s in stats_type %}
+        <tr>
+          <td>{{ s.type }}</td>
+          <td style="text-align:right">{{ s.nb }}</td>
+          {% if s.diametre is not none %}
+          <td style="text-align:center"><span class="{{ 'gr' if s.diametre >= 80 else ('or' if s.diametre >= 50 else 're') }}"><b>{{ s.diametre }}%</b></span></td>
+          {% else %}<td style="text-align:center;color:#aaa">—</td>{% endif %}
+          {% if s.hauteur is not none %}
+          <td style="text-align:center"><span class="{{ 'gr' if s.hauteur >= 80 else ('or' if s.hauteur >= 50 else 're') }}"><b>{{ s.hauteur }}%</b></span></td>
+          {% else %}<td style="text-align:center;color:#aaa">—</td>{% endif %}
+          {% if s.materiau is not none %}
+          <td style="text-align:center"><span class="{{ 'gr' if s.materiau >= 80 else ('or' if s.materiau >= 50 else 're') }}"><b>{{ s.materiau }}%</b></span></td>
+          {% else %}<td style="text-align:center;color:#aaa">—</td>{% endif %}
+        </tr>
+        {% endfor %}
+      </table>
+      {% endif %}
+
+      <!-- Tableau par type de matériau -->
+      {% if stats_materiau %}
+      <div style="font-size:7.5pt;font-weight:700;color:#3d2e4a;margin:5px 0 2px;">Matériau</div>
+      <table>
+        <tr>
+          <th>Matériau</th>
+          <th style="text-align:right">Nb tronçons</th>
+          <th style="text-align:center">% Conformité</th>
+        </tr>
+        {% for m in stats_materiau %}
+        <tr>
+          <td>{{ m.materiau }}</td>
+          <td style="text-align:right">{{ m.nb }}</td>
+          <td style="text-align:center">
+            <span class="{{ 'gr' if m.conformite >= 80 else ('or' if m.conformite >= 50 else 're') }}">
+              <b>{{ m.conformite }}%</b>
+            </span>
+          </td>
+        </tr>
+        {% endfor %}
+      </table>
+      <div style="font-size:6.5pt;color:#8a7a98;margin-top:3px;font-style:italic">
+        — = contrainte non applicable · % = taux de conformité des valeurs renseignées
+      </div>
+      {% else %}
+      <div class="msg-vide"><b>Aucune donnée conditionnelle</b></div>
+      {% endif %}
+
+      <!-- 2.5 Exemples de valeurs problématiques — organisés par couche -->
+      <div class="sub">2.5 Exemples de valeurs problématiques</div>
+      {% if exemples_erreurs %}
+      <table>
+        <tr><th>Couche</th><th>Champ</th><th>Valeur saisie</th><th>Problème</th></tr>
+        {% for ex in exemples_erreurs %}
+        <tr>
+          <td>{{ ex.couche }}</td><td>{{ ex.label }}</td>
+          <td class="re">{{ ex.valeur }}</td><td>{{ ex.probleme }}</td>
+        </tr>
+        {% endfor %}
+      </table>
+      {% else %}
+      <div class="msg-vide"><b>✓ Aucune valeur problématique</b>Les valeurs présentes respectent les règles de typage.</div>
+      {% endif %}
+    </div>
+
+    <!-- BLOC 3 : QUALITÉ TOPOLOGIQUE -->
+    <div class="bloc">
+      <div class="block-title"><span class="bnum">3</span><span class="btxt">Qualité spatiale / topologique</span></div>
+
+      <div class="sub">3.1 Raccordement des nœuds au réseau</div>
+      <div class="dc" style="margin-bottom:5px">
+        <img src="{{ img_donut_noeuds }}" style="width:110px;height:auto;flex-shrink:0;" alt="Raccordement">
+        <div class="dc-leg">
+          <div><span class="dot" style="background:#6b4a8a"></span>Raccordés : <b>{{ topo.noeuds.connectes }}</b></div>
+          <div><span class="dot" style="background:#ed7d31"></span>Non raccordés : <b class="or">{{ topo.noeuds.non_connectes }}</b></div>
+          <div><span class="dot" style="background:#a63030"></span>Au milieu d'un tronçon : <b class="re">{{ topo.noeuds.au_milieu }}</b></div>
+        </div>
+      </div>
+      <img class="map-img" src="{{ img_map_noeuds }}" alt="Carte nœuds">
+
+      <div class="sub" style="margin-top:6px">3.2 Délimitation des tronçons</div>
+      <div class="grid3">
+        <div class="dcard bg-g">
+          <div class="big gr">{{ topo.troncons.deux_cotes }}</div>
+          <div class="lbl" style="color:#4a5c4d">Délimités aux<br>deux extrémités</div>
+        </div>
+        <div class="dcard bg-o">
+          <div class="big wa">{{ topo.troncons.un_cote_seul }}</div>
+          <div class="lbl" style="color:#6b4a1e">Une extrémité<br>non reliée</div>
+        </div>
+        <div class="dcard bg-r">
+          <div class="big re">{{ topo.troncons.non_delimite }}</div>
+          <div class="lbl" style="color:#5c2020">Deux extrémités<br>non reliées</div>
+        </div>
+      </div>
+      <img class="map-img" src="{{ img_map_troncons }}" alt="Carte tronçons">
+    </div>
+
+  </div>
+
+  <!-- BLOCS 4 (4.1+4.2) À GAUCHE | 5 À DROITE -->
+  <div style="display:grid;grid-template-columns:1fr 1fr;gap:9px;margin-top:0;align-items:start;">
+
+    <!-- BLOC 4 : NIVEAU DE QUALITÉ — contient 4.1 et 4.2 -->
+    <div class="bloc" style="grid-column:1;grid-row:1;">
+      <div class="block-title"><span class="bnum">4</span><span class="btxt">Niveau de qualité — interprétation</span></div>
+
+      <!-- 4.1 Score global de qualité -->
+      <div class="sub">4.1 Score global de qualité</div>
+
+      
+      <div class="niveau-wrap">
+        <div class="niveau-titre">Positionnement du score global ({{ ifq }}%)</div>
+        <div class="scale-outer">
+          <div class="scale-bar">
+            <div class="sc-r">0 – 50 % · Faible</div>
+            <div class="sc-o">50 – 80 % · Moyenne</div>
+            <div class="sc-g">80 – 100 % · Bonne</div>
+          </div>
+          <div class="cursor" style="left:{{ ifq }}%">
+            <div class="cursor-arrow"></div>
+            <div class="cursor-val">{{ ifq }}% — ici</div>
+          </div>
+        </div>
+        <div class="interp-grid">
+          <div class="interp-card bg-r" {% if ifq < 50 %}style="border:1.5px solid #a63030"{% endif %}>
+            <div class="it re">0 – 50 % · Faible</div>
+            <div class="id" style="color:#5c2020">Données fortement dégradées. Intégration déconseillée sans correction préalable.</div>
+          </div>
+          <div class="interp-card bg-o" {% if 50 <= ifq < 80 %}style="border:1.5px solid #ed7d31"{% endif %}>
+            <div class="it wa">50 – 80 % · Moyenne {% if 50 <= ifq < 80 %}← ici{% endif %}</div>
+            <div class="id" style="color:#6b4a1e">Des anomalies significatives existent. Un plan de correction ciblé est nécessaire.</div>
+          </div>
+          <div class="interp-card bg-g" {% if ifq >= 80 %}style="border:1.5px solid #4a8050"{% endif %}>
+            <div class="it gr">80 – 100 % · Bonne {% if ifq >= 80 %}← ici{% endif %}</div>
+            <div class="id" style="color:#2d4a32">Données exploitables. Des améliorations mineures peuvent être envisagées.</div>
+          </div>
+        </div>
+        <div class="note-metier">
+          <b>Note :</b> Score calculé à parts égales entre qualité attributaire (50%) et topologique (50%).
+          {% if score_topo < score_attr %}La qualité topologique est la plus critique : <b>{{ score_topo }}%</b>.
+          {% else %}La qualité attributaire est la plus critique : <b>{{ score_attr }}%</b>.{% endif %}
+        </div>
+      </div>
+    
+
+      <!-- 4.2 Indice de connaissance patrimoniale -->
+      <div class="sub" style="margin-top:8px;">4.2 Indice de connaissance patrimoniale SIG</div>
+<!-- BLOC 4.2 : INDICE DE CONNAISSANCE PATRIMONIALE SIG -->
+      <div class="niveau-wrap">
+        <div class="niveau-titre">
+          Positionnement de l'indice ({{ icgp.total_score }} / {{ icgp.total_max }} pts)
+        </div>
+        <!-- Barre de positionnement -->
+        <div class="scale-outer">
+          <div class="scale-bar">
+            <div style="flex:15;background:#a63030;color:#fff;display:flex;align-items:center;justify-content:center;font-size:7.5pt;font-weight:700;">0–15 · Insuffisant</div>
+            <div style="flex:15;background:#c25e0e;color:#fff;display:flex;align-items:center;justify-content:center;font-size:7.5pt;font-weight:700;">15–30 · Partiel</div>
+            <div style="flex:10;background:#4a8050;color:#fff;display:flex;align-items:center;justify-content:center;font-size:7.5pt;font-weight:700;">30–40 · Satisfaisant</div>
+          </div>
+          <div class="cursor" style="left:{{ (icgp.total_score / icgp.total_max * 100)|round }}%">
+            <div class="cursor-arrow"></div>
+            <div class="cursor-val">{{ icgp.total_score }} — ici</div>
+          </div>
+        </div>
+        <!-- Cases d'interprétation compactes -->
+        <div style="display:grid;grid-template-columns:1fr 1fr 1fr;gap:3px;margin-bottom:5px;">
+          <div style="background:#f5dada;border-radius:3px;padding:3px 4px;{% if icgp.niveau_global == 'Insuffisant' %}border:1.5px solid #a63030;{% endif %}">
+            <div style="font-size:7pt;font-weight:700;color:#a63030;">0–15 · Insuffisant{% if icgp.niveau_global == 'Insuffisant' %} ←{% endif %}</div>
+            <div style="font-size:6.5pt;color:#5c2020;">Connaissance très lacunaire.</div>
+          </div>
+          <div style="background:#fce4cf;border-radius:3px;padding:3px 4px;{% if icgp.niveau_global == 'Partiel' %}border:1.5px solid #c25e0e;{% endif %}">
+            <div style="font-size:7pt;font-weight:700;color:#c25e0e;">15–30 · Partiel{% if icgp.niveau_global == 'Partiel' %} ←{% endif %}</div>
+            <div style="font-size:6.5pt;color:#6b4a1e;">Champs structurels incomplets.</div>
+          </div>
+          <div style="background:#e8f0e9;border-radius:3px;padding:3px 4px;{% if icgp.niveau_global == 'Satisfaisant' %}border:1.5px solid #4a8050;{% endif %}">
+            <div style="font-size:7pt;font-weight:700;color:#4a8050;">30–40 · Satisfaisant{% if icgp.niveau_global == 'Satisfaisant' %} ←{% endif %}</div>
+            <div style="font-size:6.5pt;color:#2d4a32;">Données exploitables.</div>
+          </div>
+        </div>
+        <!-- Tableau des critères -->
+        <table>
+          <tr>
+            <th>Critère</th>
+            <th style="text-align:right">Points max</th>
+            <th style="text-align:right">Score obtenu</th>
+            <th style="text-align:center">Niveau</th>
+          </tr>
+          {% for c in icgp.criteres %}
+          <tr>
+            <td>{{ c.label }}</td>
+            <td style="text-align:right;color:#6b5878">{{ c.points_max }}</td>
+            <td style="text-align:right">
+              <b class="{{ 'gr' if c.niveau == 'Satisfaisant' else ('wa' if c.niveau == 'Partiel' else 're') }}">
+                {{ c.score }}
+              </b>
+            </td>
+            <td style="text-align:center">
+              <span class="pill {{ 'pr' if c.niveau == 'Insuffisant' else ('po' if c.niveau == 'Partiel' else 'pp') }}">
+                {{ c.niveau }}
+              </span>
+            </td>
+          </tr>
+          {% endfor %}
+          <tr style="border-top:1.5px solid #d9cde3;">
+            <td><b>Total</b></td>
+            <td style="text-align:right"><b>{{ icgp.total_max }}</b></td>
+            <td style="text-align:right">
+              <b class="{{ 'gr' if icgp.niveau_global == 'Satisfaisant' else ('wa' if icgp.niveau_global == 'Partiel' else 're') }}">
+                {{ icgp.total_score }}
+              </b>
+            </td>
+            <td style="text-align:center">
+              <span class="pill {{ 'pr' if icgp.niveau_global == 'Insuffisant' else ('po' if icgp.niveau_global == 'Partiel' else 'pp') }}">
+                {{ icgp.niveau_global }}
+              </span>
+            </td>
+          </tr>
+        </table>
+        <div style="background:#f5eee0;border-radius:3px;padding:3px 5px;margin-top:4px;font-size:6.5pt;color:#5c3d1e;">
+          <b>Note :</b> Indice calculé depuis les couches SIG transmises. Inspiré de la méthode ICGP sans la remplacer. Critères non évaluables (âge, branchements, plan pluriannuel) non inclus.
+        </div>
+      </div>
+
+      <!-- 4.3 Précision géographique du patrimoine réseau -->
+      <div class="sub" style="margin-top:8px;">4.3 Précision géographique du patrimoine réseau</div>
+
+      {% set tr_dispo = stats_classe_tr.disponible %}
+      {% set nd_dispo = stats_classe_nd.disponible %}
+
+      <table>
+        <tr>
+          <th>Classe</th>
+          <th style="text-align:right">Tronçon (m)</th>
+          <th style="text-align:right">% linéaire</th>
+          <th style="text-align:right">Nœud (nb)</th>
+          <th style="text-align:right">% objets</th>
+        </tr>
+
+        {# Construire la liste unifiée des classes présentes #}
+        {% set classes_tr = stats_classe_tr.stats | map(attribute='classe') | list if tr_dispo else [] %}
+        {% set classes_nd = stats_classe_nd.stats | map(attribute='classe') | list if nd_dispo else [] %}
+        {% set toutes_classes = (classes_tr + classes_nd) | unique | sort | list %}
+
+        {% if toutes_classes %}
+        {% for classe in toutes_classes %}
+        {% set tr_row = stats_classe_tr.stats | selectattr('classe','equalto',classe) | first | default(none) %}
+        {% set nd_row = stats_classe_nd.stats | selectattr('classe','equalto',classe) | first | default(none) %}
+        <tr>
+          <td><b>{{ classe }}</b></td>
+          {% if tr_dispo %}
+            {% if tr_row %}
+            <td style="text-align:right">{{ tr_row.valeur }}</td>
+            <td style="text-align:right">
+              <span class="{{ 'gr' if tr_row.pct >= 80 else ('or' if tr_row.pct >= 50 else 're') }}">
+                <b>{{ tr_row.pct }}%</b>
+              </span>
+            </td>
+            {% else %}
+            <td style="text-align:right;color:#aaa">0</td>
+            <td style="text-align:right;color:#aaa">0%</td>
+            {% endif %}
+          {% else %}
+          <td style="text-align:center;color:#aaa">—</td>
+          <td style="text-align:center;color:#aaa">—</td>
+          {% endif %}
+          {% if nd_dispo %}
+            {% if nd_row %}
+            <td style="text-align:right">{{ nd_row.valeur | int }}</td>
+            <td style="text-align:right">
+              <span class="{{ 'gr' if nd_row.pct >= 80 else ('or' if nd_row.pct >= 50 else 're') }}">
+                <b>{{ nd_row.pct }}%</b>
+              </span>
+            </td>
+            {% else %}
+            <td style="text-align:right;color:#aaa">0</td>
+            <td style="text-align:right;color:#aaa">0%</td>
+            {% endif %}
+          {% else %}
+          <td style="text-align:center;color:#aaa">—</td>
+          <td style="text-align:center;color:#aaa">—</td>
+          {% endif %}
+        </tr>
+        {% endfor %}
+
+        {# Ligne total #}
+        <tr style="border-top:1.5px solid #d9cde3;">
+          <td><b>Total</b></td>
+          {% if tr_dispo %}
+          <td style="text-align:right"><b>{{ stats_classe_tr.total }}</b></td>
+          <td style="text-align:right"><b>100%</b></td>
+          {% else %}
+          <td style="text-align:center;color:#aaa">—</td>
+          <td style="text-align:center;color:#aaa">—</td>
+          {% endif %}
+          {% if nd_dispo %}
+          <td style="text-align:right"><b>{{ stats_classe_nd.total | int }}</b></td>
+          <td style="text-align:right"><b>100%</b></td>
+          {% else %}
+          <td style="text-align:center;color:#aaa">—</td>
+          <td style="text-align:center;color:#aaa">—</td>
+          {% endif %}
+        </tr>
+
+        {% else %}
+        {# Aucune classe disponible dans aucune couche #}
+        <tr>
+          <td colspan="5" style="text-align:center;color:#aaa;font-style:italic">
+            — Aucune donnée de classe disponible —
+          </td>
+        </tr>
+        {% endif %}
+      </table>
+
+      {# Note de bas de tableau personnalisée selon disponibilité #}
+      <div style="font-size:6.5pt;color:#8a7a98;margin-top:3px;font-style:italic">
+        {% if tr_dispo and nd_dispo %}
+          Les valeurs ont été normalisées (majuscules, espaces supprimés).
+          Non renseigné = valeurs absentes ou nulles dans les données transmises.
+          % linéaire tronçon calculé sur la longueur géométrique · % nœud calculé sur le nombre d'objets.
+        {% elif tr_dispo and not nd_dispo %}
+          Champ classe disponible pour la couche Tronçon uniquement.
+          La couche Nœud ne comporte pas ce champ dans les données transmises (—).
+        {% elif not tr_dispo and nd_dispo %}
+          Champ classe disponible pour la couche Nœud uniquement.
+          La couche Tronçon ne comporte pas ce champ dans les données transmises (—).
+        {% else %}
+          Le champ de classe de précision est absent des deux couches transmises.
+          — = information non disponible dans les données.
+        {% endif %}
+      </div>
+      {% if stats_classe_tr.n_geom_invalide and stats_classe_tr.n_geom_invalide > 0 %}
+      <div style="font-size:6.5pt;color:#a63030;margin-top:2px;font-style:italic">
+        {{ stats_classe_tr.n_geom_invalide }}
+        tronçon{{ "s" if stats_classe_tr.n_geom_invalide > 1 else "" }}
+        exclu{{ "s" if stats_classe_tr.n_geom_invalide > 1 else "" }} du calcul —
+        géométrie vide ou absente dans les données transmises.
+      </div>
+      {% endif %}
+
+      <!-- 4.4 Vue d'ensemble de qualification — lecture transversale de 4.1/4.2/4.3
+           Ne recalcule ni ne fusionne aucun chiffre : simple synthèse textuelle. -->
+      <div class="sub" style="margin-top:8px;">4.4 Vue d'ensemble de qualification</div>
+      <div class="note-metier">
+        {{ synthese_4_4.phrase_principale }}
+        {% if synthese_4_4.phrase_4_3_non_evaluable %}
+        {{ synthese_4_4.phrase_4_3_non_evaluable }}
+        {% endif %}
+      </div>
+
+    </div><!-- /bloc 4 -->
+
+    <!-- BLOC 5 : ACTIONS CORRECTIVES -->
+    <!-- BLOC 5 : ACTIONS CORRECTIVES — divisées en Terrain et Carto -->
+    <div class="bloc" style="grid-column:2;grid-row:1;">
+      <div class="block-title"><span class="bnum">5</span><span class="btxt">Actions correctives prioritaires</span></div>
+
+      <!-- Cases statistiques clés style 3.2 -->
+      <div class="grid3" style="margin-bottom:7px;">
+        <div class="dcard bg-r">
+          <div class="big re">{{ nb_ouvrages_visiter }}</div>
+          <div class="lbl" style="color:#5c2020">Ouvrages à<br>visiter terrain</div>
+        </div>
+        <div class="dcard bg-o">
+          <div class="big wa">{{ nb_anomalies_topo }}</div>
+          <div class="lbl" style="color:#6b4a1e">Anomalies<br>topologiques</div>
+        </div>
+        <div class="dcard" style="background:#e8deef;">
+          <div class="big pu">{{ nb_corrections_bureau }}</div>
+          <div class="lbl" style="color:#3d2e4a">Corrections<br>bureau (carto)</div>
+        </div>
+      </div>
+
+      <!-- Actions terrain -->
+      {% if actions_terrain %}
+      <div class="sub" style="background:#f5dada;padding:2px 5px;border-radius:3px;color:#a63030;">
+        🏗 Actions terrain
+      </div>
+      <table style="margin-bottom:5px">
+        <tr>
+          <th style="width:20px">#</th>
+          <th>Anomalie identifiée</th>
+          <th>Action corrective</th>
+          <th style="text-align:right">Nb objets</th>
+        </tr>
+        {% for p in actions_terrain %}
+        <tr>
+          <td><span class="pill pr">{{ loop.index }}</span></td>
+          <td>{{ p.desc }}</td>
+          <td style="color:#5c2020;font-style:italic">{{ p.action }}</td>
+          <td style="text-align:right"><b class="re">{{ p.count }}</b></td>
+        </tr>
+        {% endfor %}
+      </table>
+      {% endif %}
+
+      <!-- Actions carto -->
+      {% if actions_carto %}
+      <div class="sub" style="background:#e8deef;padding:2px 5px;border-radius:3px;color:#6b4a8a;">
+        🖥 Actions carto (bureau)
+      </div>
+      <table>
+        <tr>
+          <th style="width:20px">#</th>
+          <th>Anomalie identifiée</th>
+          <th>Action corrective</th>
+          <th style="text-align:right">Nb objets</th>
+        </tr>
+        {% for p in actions_carto %}
+        <tr>
+          <td><span class="pill pp">{{ loop.index }}</span></td>
+          <td>{{ p.desc }}</td>
+          <td style="color:#3d2e4a;font-style:italic">{{ p.action }}</td>
+          <td style="text-align:right"><b class="pu">{{ p.count }}</b></td>
+        </tr>
+        {% endfor %}
+      </table>
+      {% endif %}
+
+      {% if not actions_terrain and not actions_carto %}
+      <div class="msg-vide"><b>✓ Aucune anomalie détectée</b>Les données sont conformes aux critères de qualité.</div>
+      {% endif %}
+    </div>
+
+  </div>
+
+  </div><!-- /grid2 blocs 4+5 -->
+</div>
+
+<!-- FOOTER -->
+<div class="footer">
+  <span>SCE — Qualification SIG {{ projet_version }} · {{ projet_date }}</span>
+  <span>Document produit à partir des données transmises par le client</span>
+</div>
+
+</div>
+</body>
+</html>

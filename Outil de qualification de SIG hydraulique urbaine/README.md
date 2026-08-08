@@ -232,12 +232,3 @@ Dans `mapping.py`, ajouter une entrée dans `CHAMPS_TRONCON` ou `CHAMPS_NOEUD` :
 
 ---
 
-## Dépannage
-
-**"Fichier introuvable"** → Vérifier `DATA_DIR` dans `config.py`
-
-**"Module not found"** → Vérifier que `qual_env` est activé : `conda activate qual_env`
-
-**PDF sur plusieurs pages** → Utiliser Chrome pour imprimer le HTML (voir section PDF)
-
-**Cartes sans fond OSM** → Vérifier la connexion internet. Sans connexion, un fond neutre est utilisé automatiquement.

@@ -1,4 +1,4 @@
-# Qualification SIG — SCE
+# Qualification du SIG sur les réseau d'eau pluviale et usées
 ## Documentation complète — V5
 
 ---
@@ -12,7 +12,7 @@ Ce projet génère automatiquement un rapport de qualification des données SIG
 - Un rapport **PDF** (une page A4 paysage)
 - Un fichier **PowerPoint** éditable (pour ajustements manuels)
 - Les couches **GeoPackage enrichies** avec les champs de qualification
-
+La démarche à consister à échanger avec les chefs projets, les responsables de domaines, de pôles et les directeurs de département afin de construire les indicateurs de qualifications du SIG conformément à la règlementation dans le secteur. Il s'agit donc d'un outil sur mesure pour la qualification de données. 
 ---
 
 ## Structure du projet

@@ -42,7 +42,7 @@ Sortie : `bati_oui`, `bati_non` par commune.
 
 Retour sur couche commune, clé `commune_id`.
 
-### 6. Calculate Field — nettoyage des nulls
+### 6. Calculate Field  nettoyage des nulls
 
 ```python
 def nettoyer(val):
@@ -51,7 +51,7 @@ def nettoyer(val):
     return val
 ```
 
-### 7. Calculate Field — estimation dasymétrique
+### 7. Calculate Field  estimation dasymétrique
 
 ```
 pop_couvert = population * (bati_oui / (bati_oui + bati_non))
@@ -83,7 +83,7 @@ Sortie : `etab_public`, `etab_prive`.
 
 Retour sur couche commune.
 
-### 12. Calculate Field — proxy financier
+### 12. Calculate Field  proxy financier
 
 ```python
 def pct_public(pub, priv):
@@ -100,7 +100,7 @@ def classer_fin(pub, priv):
     return "Favorable" if pct >= 50 else "Defavorable"
 ```
 
-### 13. Calculate Field — classes de lecture cartographique
+### 13. Calculate Field  classes de lecture cartographique
 
 4 classes égales, pas de 25 points.
 
@@ -119,7 +119,7 @@ def classer_couverture(taux):
 
 Logique identique pour `classe_public` sur `pct_pub`.
 
-### 14. Calculate Field — indicateur composite de priorité
+### 14. Calculate Field indicateur composite de priorité
 
 ```python
 def priorite(taux_couv, fin):

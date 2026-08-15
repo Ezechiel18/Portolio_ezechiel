@@ -138,6 +138,4 @@ def priorite(taux_couv, fin):
 - Rayon uniforme sur tous les niveaux de la pyramide sanitaire, non différencié par type d'établissement
 - Dasymétrie à pondération uniforme par bâtiment, sans variable de surface ou de typologie
 - Proxy financier disponible à l'échelle communale uniquement, non désagrégeable au bâtiment
-- Commune Doufelgou 3 exclue, absence de polygone correspondant dans le fond communal
-- Doublon géométrique sur Bas-Mono 2, fusionné avant traitement
-- Couverture du bâti potentiellement incomplète en zone rurale (OpenStreetMap, Google Open Buildings)
+- Couverture du bâti potentiellement incomplète en zone rurale (OpenStreetMap)

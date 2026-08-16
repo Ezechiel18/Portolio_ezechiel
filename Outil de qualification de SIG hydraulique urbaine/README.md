@@ -48,12 +48,12 @@ rapport_qualite/
 
 ---
 
-## Installation — première fois
+## Réutilisation - installation pour une première fois
 
 ### Étape 1 — Télécharger et décompresser le projet
 
 Placer le dossier `rapport_qualite/` à l'emplacement de votre choix.
-Exemple : `C:\Projet_prediag\rapport_qualite\`
+Exemple : `C:\mmmm\rapport_qualite\`
 
 ### Étape 2 — Créer l'environnement conda
 

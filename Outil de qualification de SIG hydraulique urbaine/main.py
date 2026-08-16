@@ -1,8 +1,8 @@
 #!/usr/bin/env python3
 # =============================================================================
-#  main.py — Point d'entrée unique — Qualification SIG SCE — V25
+#  main.py — Point d'entrée unique — Qualification SIG SCE — V22
 #
-#  CHANGEMENTS V25 :
+#  CHANGEMENTS V22 :
 #    - Dédoublonnage des exemples en section 2.4 (combinaison couche+champ+valeur)
 #    - Génération PDF via Chrome headless (1 page, fidèle au HTML)
 #    - Génération PowerPoint éditable via python-pptx

@@ -48,14 +48,14 @@ rapport_qualite/
 
 ---
 
-## Réutilisation - installation pour une première fois
+## Réutilisation-installation pour une première fois
 
-### Étape 1 — Télécharger et décompresser le projet
+### Étape 1-Télécharger et décompresser le projet
 
 Placer le dossier `rapport_qualite/` à l'emplacement de votre choix.
 Exemple : `C:\mmmm\rapport_qualite\`
 
-### Étape 2 — Créer l'environnement conda
+### Étape 2-Créer l'environnement conda
 
 Ouvrir **Anaconda Prompt** et exécuter :
 
@@ -67,7 +67,7 @@ conda env create -f environment.yml
 Cette commande crée l'environnement `qual_env` avec toutes les dépendances.
 Ne faire cette étape **qu'une seule fois**.
 
-### Étape 3 — Vérifier l'installation
+### Étape 3-Vérifier l'installation
 
 ```bash
 conda activate qual_env
@@ -76,9 +76,9 @@ python -c "import geopandas, contextily, jinja2, pptx; print('OK')"
 
 ---
 
-## Utilisation — pour chaque nouveau projet
+## Utilisation-pour chaque nouveau projet
 
-### Étape 1 — Ouvrir `config.py` et modifier
+### Étape 1-Ouvrir `config.py` et modifier
 
 ```python
 # Chemins vers les données du client
@@ -95,7 +95,7 @@ PROJET_COMMUNE = "Nom de la commune"
 PROJET_VERSION = "v1.0"
 ```
 
-### Étape 2 — Ouvrir `mapping.py` et renseigner les noms des champs
+### Étape 2-Ouvrir `mapping.py` et renseigner les noms des champs
 
 Pour chaque champ clé, indiquer le nom **exact** tel qu'il apparaît
 dans les données du client (vérifier dans QGIS ou avec la commande ci-dessous).
@@ -120,7 +120,7 @@ CHAMPS_TRONCON = {
 Si un champ est absent des données client, laisser `"nom_client": None`.
 Il apparaîtra en rouge dans le rapport.
 
-### Étape 3 — Lancer le script
+### Étape 3-Lancer le script
 
 ```bash
 conda activate qual_env
@@ -139,7 +139,7 @@ Le script affiche sa progression dans le terminal :
   ✓ IFQ = 67%
 ```
 
-### Étape 4 — Récupérer les sorties
+### Étape 4-Récupérer les sorties
 
 Tous les fichiers sont dans le dossier `output/` :
 

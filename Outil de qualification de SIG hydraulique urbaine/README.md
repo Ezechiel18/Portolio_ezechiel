@@ -195,7 +195,7 @@ Tous les fichiers sont dans le dossier `output/` :
 
 ---
 
-## PDF sur une seule page
+## HTML sur une seule page
 
 Le meilleur rendu PDF s'obtient via **Chrome** :
 

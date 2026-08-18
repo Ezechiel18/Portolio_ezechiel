@@ -50,7 +50,7 @@ rapport_qualite/
 
 ## Réutilisation-installation pour une première fois
 
-### Étape 1-Télécharger et décompresser le projet
+### Étape 1-Télécharger et décompresser le projet (ensemble du script)
 
 Placer le dossier `rapport_qualite/` à l'emplacement de votre choix.
 Exemple : `C:\mmmm\rapport_qualite\`

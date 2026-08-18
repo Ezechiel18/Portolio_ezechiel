@@ -3,7 +3,7 @@
 
 ---
 
-## Qu'est-ce que ce projet ?
+## Objectif du projet
 
 Ce projet génère automatiquement un rapport de qualification des données SIG
 à partir de deux couches hydrauliques (tronçons et nœuds). Il produit :
@@ -20,8 +20,8 @@ La démarche à consister à échanger avec les chefs projets, les responsables 
 ```
 rapport_qualite/
 │
-├── config.py            ← Chemins, infos projet, logo SCE  [À MODIFIER]
-├── mapping.py           ← Correspondance champs client      [À MODIFIER]
+├── config.py            ← Chemins, infos projet, logo SCE  [À MODIFIER EN REUTILISATION]
+├── mapping.py           ← Correspondance champs client      [À MODIFIER EN REUTILISATION]
 ├── main.py              ← Point d'entrée — lancer ce fichier
 ├── environment.yml      ← Environnement conda
 │

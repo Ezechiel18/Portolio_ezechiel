@@ -87,7 +87,7 @@ TRONCON_FILE = os.path.join(DATA_DIR, "Troncon.shp")
 NOEUD_FILE   = os.path.join(DATA_DIR, "Noeud.shp")
 
 # Logo SCE (chemin vers le PNG du logo)
-LOGO_SCE_PATH = r"C:\logos\logo_sce.png"
+LOGO_SCE_PATH = r"C:\logos\logo.png"
 
 # Informations du projet
 PROJET_NOM     = "Réseau d'assainissement"

@@ -11,11 +11,11 @@ Estimation de l'accessibilité géographique, démographique et financière aux 
 - Établissements de santé : 2271 points, attributs `etablissement_type`, `secteur`
 - Communes : 117 polygones, `commune_id`
 - Population : RGPH5, INSEED 2023, jointe par `commune_id`
-- Bâti : Living Atlas Africa Buildings (Google Open Buildings)
+- Bâti : OSM
 
 ## Norme de référence
 
-Rayon de 5 km, PMPP 2021 (Banque mondiale, P174266). Seuils USP1 : 2500-5000 hab, USP2 : 5000-15000 hab. Rayon uniforme appliqué à tous les niveaux de la pyramide sanitaire pour homogénéiser le traitement.
+Rayon de 5 km, PMPP 2021 (Banque mondiale, P174266)
 
 ## Chaîne de géotraitement
 

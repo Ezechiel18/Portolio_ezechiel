@@ -1,0 +1,29 @@
+Pré-diagnostic LCZ : Avignon (84007)
+
+Mailles analysées : 1777
+Surface de la commune : 6505.17 ha
+Bâtiments BD TOPO retenus après filtre : 61475
+
+Répartition des classes LCZ sur la surface de la commune
+(les mailles de bord comptent pour leur seule partie située dans la commune) :
+  LCZ 2     Ensemble compact d'immeubles                  140.00 ha  (  2.2 %)
+  LCZ 3     Ensemble compact de maisons                   556.14 ha  (  8.5 %)
+  LCZ 5     Ensemble d'immeubles espacés                  108.00 ha  (  1.7 %)
+  LCZ 6     Ensemble de maisons espacées                  723.88 ha  ( 11.1 %)
+  LCZ 8/10  Bâtiments de grande emprise                   556.00 ha  (  8.5 %)
+  LCZ 9     Implantation diffuse de maisons               491.70 ha  (  7.6 %)
+  LCZ A     Espace densément arboré                       667.25 ha  ( 10.3 %)
+  LCZ B     Espace arboré clairsemé                       564.35 ha  (  8.7 %)
+  LCZ C     Espace végétalisé hétérogène                  816.67 ha  ( 12.6 %)
+  LCZ D     Végétation basse                             1252.50 ha  ( 19.3 %)
+  LCZ E     Sol imperméable naturel ou artificiel          84.00 ha  (  1.3 %)
+  LCZ F     Sol nu perméable                               38.41 ha  (  0.6 %)
+  LCZ G     Surface en eau                                506.28 ha  (  7.8 %)
+
+Contrôles qualité (mailles marquées dans le GeoPackage) :
+  1. Somme des taux écartée de plus de 1.0 point de 100 % : 176
+  2. Mailles bâties (BuR > 10 %) sans bâtiment BD TOPO retenu : 6
+  3. Mailles avec VHR forcé à 0 : 0
+  4. Codes OCS GE inconnus : aucun (sinon le calcul aurait été arrêté)
+
+Lecture : pré-diagnostic de la surchauffe urbaine, pas une carte d'îlot de chaleur.

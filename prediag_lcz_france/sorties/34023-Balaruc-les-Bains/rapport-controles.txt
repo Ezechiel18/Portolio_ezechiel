@@ -1,0 +1,27 @@
+Pré-diagnostic LCZ : Balaruc-les-Bains (34023)
+
+Mailles analysées : 264
+Surface de la commune : 867.92 ha
+Bâtiments BD TOPO retenus après filtre : 4703
+
+Répartition des classes LCZ sur la surface de la commune
+(les mailles de bord comptent pour leur seule partie située dans la commune) :
+  LCZ 3     Ensemble compact de maisons                    76.84 ha  (  8.9 %)
+  LCZ 5     Ensemble d'immeubles espacés                    4.00 ha  (  0.5 %)
+  LCZ 6     Ensemble de maisons espacées                  180.27 ha  ( 20.8 %)
+  LCZ 8/10  Bâtiments de grande emprise                     4.60 ha  (  0.5 %)
+  LCZ 9     Implantation diffuse de maisons                61.24 ha  (  7.1 %)
+  LCZ A     Espace densément arboré                        32.91 ha  (  3.8 %)
+  LCZ B     Espace arboré clairsemé                        42.76 ha  (  4.9 %)
+  LCZ C     Espace végétalisé hétérogène                   49.04 ha  (  5.7 %)
+  LCZ D     Végétation basse                              134.06 ha  ( 15.4 %)
+  LCZ E     Sol imperméable naturel ou artificiel           2.84 ha  (  0.3 %)
+  LCZ G     Surface en eau                                279.36 ha  ( 32.2 %)
+
+Contrôles qualité (mailles marquées dans le GeoPackage) :
+  1. Somme des taux écartée de plus de 1.0 point de 100 % : 0
+  2. Mailles bâties (BuR > 10 %) sans bâtiment BD TOPO retenu : 0
+  3. Mailles avec VHR forcé à 0 : 0
+  4. Codes OCS GE inconnus : aucun (sinon le calcul aurait été arrêté)
+
+Lecture : pré-diagnostic de la surchauffe urbaine, pas une carte d'îlot de chaleur.
